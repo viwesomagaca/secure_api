@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const cors = require('cors');
+const apiRoutes = require('./routes/api');
+const clientRoutes = require('./routes/client');
 require('dotenv').config()
 const app = express()
 const port = process.env.PORT;
