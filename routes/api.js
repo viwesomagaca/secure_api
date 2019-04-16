@@ -8,7 +8,7 @@ router.get('/items', apiRoutes.getItems);
 router.post('/items', apiRoutes.addItems);
 router.get('/items/:id',apiRoutes. getItemById);
 router.post('/items/:id', apiRoutes.updateItem);
-router.post('/item/:id', apiRoutes.deleteItem);
+router.post('/items/:id', apiRoutes.deleteItem);
 
 
 
