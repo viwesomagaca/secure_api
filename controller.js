@@ -8,9 +8,21 @@
   }).catch(err =>{
       return res.status(400).json({ sucess: false, error:err})
   })
+ };
+
+ const addItems =(req, res)=>{
+  const Item = new storage();
+   Item.itemname = req.body.itemname
+   Item.description = req.body.description
+
+   Item.save(err =>{
+       res.status(200).json({ sucess:true})
+   })
  }
+
 
  module.exports ={
      getItems,
+     addItems
     
  }
