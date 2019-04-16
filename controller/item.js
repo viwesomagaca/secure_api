@@ -1,4 +1,4 @@
- const storage = require('./model/item');
+ const storage = require('../model/item');
 
  const getItems = (req, res) => {
      storage.find()
@@ -30,7 +30,7 @@
 
  const getItemById = (req, res) => {
   const {id} = req.params;
-     storage.find({  _id: id
+     storage.findOne({_id: id
          })
          .then(data => {
              res.status(200).json({
