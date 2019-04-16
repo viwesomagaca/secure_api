@@ -54,12 +54,21 @@
     }).catch(err =>{
         return res.status(400).json({ success: false});
     })
+ };
+
+ const deleteItem = (req,res)=>{
+    const {id}= req.params;
+    storage.findByIdAndDelete({_id:id})
+    .then(then =>{
+        return res.status(200).json({success:true});
+    })
  }
 
  module.exports = {
      getItems,
      addItems,
      getItemById,
-     updateItem
+     updateItem,
+     deleteItem
 
  }
