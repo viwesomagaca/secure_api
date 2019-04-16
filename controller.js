@@ -20,8 +20,18 @@
    })
  };
 
+const getItemById = (req,res)=>{
+ const {id} = req.params;
+    storage.find({_id:id})
+    .then(data =>{
+        res.status(200).json({sucess:true, items:data})
+    }).catch(err =>{
+        res.status(400).json({sucess:false, error:err});
+    })
+} 
  module.exports ={
      getItems,
-     addItems
+     addItems,
+     getItemById
     
  }
