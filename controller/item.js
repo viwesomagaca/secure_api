@@ -6,7 +6,9 @@
              console.log("data", data);
              return res.status(200).json({
                  success: true,
-                 items: data
+                 items: data,
+                 user : req.user,
+                token : req.query.secret_token
              })
          }).catch(err => {
              return res.status(400).json({
@@ -35,7 +37,9 @@
          .then(data => {
              res.status(200).json({
                  success: true,
-                 items: data
+                 items: data,
+                 user : req.user,
+                token : req.query.secret_token
              })
          }).catch(err => {
              res.status(400).json({
