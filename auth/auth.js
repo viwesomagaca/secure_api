@@ -14,7 +14,8 @@ passport.use('register', new localStrategy({
     try{
         //save infromation from the user to the database
         const user = await userModel.create({email,password});
-        return done(null,user);
+
+        return done(null,user, {message:'Sucessfully Registered'});
     } catch(err){
         done(err);
      }
@@ -30,7 +31,7 @@ passport.use('login', new localStrategy({
             return done(null, false, { message: 'User does not exist'});
         }
 
-        const validate = await user.isValidPassword(password);
+         const validate = await user.isValidPassword(password);
         if(!validate){
              return done(null,false,{ message:'Password does not Match'});
         }
@@ -50,6 +51,8 @@ passport.use(new JWTstrategy({
   }, async (token, done) => {
     try {
       //Pass the user details to the next middleware
+      console.log("USER TOKEN", token);
+      
       return done(null, token.user);
     } catch (error) {
       done(error);

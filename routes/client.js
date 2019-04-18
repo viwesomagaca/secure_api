@@ -5,11 +5,20 @@ const router = express.Router();
 // const clientRoutes = require('../controller/user');
 
 router.post('/register', passport.authenticate('register',{ session: false}),async(req,res,next) =>{
+  passport.authenticate('login', async (err, user, info) => {   try {
+  const body = { _id : user._id, email : user.email };
+  const token = jwt.sign({ user : body },'top_secret');
     res.json({ 
         message : 'Signup successful',
-        user : req.user 
-      });
-});
+        user : req.user ,
+        token : token
+      })  } catch (error) {
+        return next(error);
+      }
+    })(req, res, next);
+    });
+  
+
 
 //login route.
 router.post('/login', async (req, res, next) => {
