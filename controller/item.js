@@ -7,10 +7,10 @@
              return res.status(200).json({
                  success: true,
                  items: data,
-                 user : req.user,
-                token : req.query.secret_token
+                 user : req.user
              })
-         }).catch(err => {
+         })
+         .catch(err => {
              return res.status(400).json({
                  success: false,
                  error: err

@@ -8,7 +8,7 @@ const mongo_url = process.env.MONGO_URL;
 const mongoose = require('mongoose');
 require('./auth/auth');
 const routes = require('./routes/api');
-const loginRoutes = require('./routes/client');
+const loginRoutes = require('./controller/auth');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
